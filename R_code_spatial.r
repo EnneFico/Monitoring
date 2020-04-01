@@ -49,3 +49,4 @@ plot(country,cases, las=3, cex.axes=0.5)
 install.packages("ggplot2")
 
 #save the .RData under the menu Files
+q() # than click y to save
