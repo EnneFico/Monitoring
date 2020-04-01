@@ -20,3 +20,4 @@ spplot(meuse, "copper", main= "Copper Concentration")
 bubble(meuse, "zinc")
 
 #Exercise: bubble Copper in red
+bubble(meuse, "Copper", main= "Copper Concentration", col= "red")
