@@ -42,7 +42,7 @@ plot(country,cases, las=2) # ortogonal labes
 plot(country,cases, las=3) # vertical labes
 
 
-plot(country,cases, las=3, cex.axes=0.5)
+plot(country,cases, las=3, cex.axis=0.5)
 
 
 #package ggplot2
