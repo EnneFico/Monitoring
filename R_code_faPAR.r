@@ -4,10 +4,13 @@ library(raster)
 library(rasterVis)
 library(rasterdiv)
 
+#eliminating water from the raster
 copNDVI <- reclassify(copNDVI, cbind(253:255, NA))
 
+#plotting sum of NDVI in latitude and longitude
 levelplot(copNDVI)
 
+#set workin directory
 setwd("~/lab/")
 faPAR10 <- raster("~/lab/faPAR10.tif")
 
