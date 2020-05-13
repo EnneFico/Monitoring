@@ -35,3 +35,12 @@ model1 <- lm(faPAR10p~copNDVIp)
 
 plot(copNDVIp,faPAR10p,col="green")
 abline(model1,col="red")
+
+##########Day 2
+
+
+load("faPAR.RData")
+
+#the original faPAR from Copernicus is 2 Gb
+#let's see how much space is needed for an 8-bit set
+
