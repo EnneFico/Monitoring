@@ -45,5 +45,45 @@ plot(snow.multitemp,col=cl)
 
 # prediction
 # go to IOL and downloand prediction.r into the folder snow
-# source("prediction.r")
+source("prediction.r")
+
+plot(predicted.snow.2025.norm, col=cl)
+
+#############################################################
+
+# Day 2
+
+setwd("/")
+setwd("C:/Users/nicof/lab/snow")
+
+#Fast manner to import the set
+rlistsnow <- list.files(pattern="snow20", full.names=T)
+
+##save raster into list
+##con lapply
+
+list_rast <- lapply(rlistsnow, raster)
+snow.multitemp <- stack(list_rast)
+plot(snow.multitemp,col=cl)
+
+prediction <- raster("predicted.2025.norm.tif")
+
+writeRaster(prediction, "final.tif")
+
+# save rasters into a stack
+final.stack <- stack(snow.multitemp, prediction)
+
+#plot everything
+plot(final.stack, col=cl)
+
+#make a pdf
+pdf("my_final_exciting_graph.pdf")
+plot(final.stack, col=cl)
+dev.off()
+
+#make a png
+png("my_final_exciting_graph.png")
+plot(final.stack, col=cl)
+dev.off()
+
 
