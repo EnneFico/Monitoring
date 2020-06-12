@@ -1,0 +1,124 @@
+setwd("C:/Users/nicof/lab")
+library(raster)
+library(RStoolbox)
+
+clad <- brick("cladonia_stellaris_calaita.JPG")
+
+plotRGB(clad, 1,2,3, stretch="lin")
+
+
+#set the moving window
+window <- matrix(1, nrow = 3, ncol = 3)
+window
+
+cladpca <- rasterPCA(clad)
+plotRGB(cladpca$map, 1, 2, 3, stretch="lin")
+
+sd_clad <- focal(claspca$map$PC1, w=window, fun=sd)
+ 
+#calculate the standar deviation 
+
+PC1_agg <- aggregate(cladpca$map$PC1, fact=10)
+sd_clad <- focal(PC1_agg, w=window, fun=sd)
+
+
+sd_clad <- focal(cladpca$map$PC1, w=window, fun=sd)
+sd_clad_agg <- focal(PC1_agg, w=window, fun=sd)
+
+#plot the calculation
+par(mfrow=c(1,2))
+cl <- colorRampPalette(c('yellow','violet','black'))(100) #
+plot(sd_clad, col=cl)
+
+# plot the calculation
+par(mfrow=c(1,2))
+cl <- colorRampPalette(c('yellow','violet','black'))(100) #
+plot()
+plotRGB(clad, 1,2,3, stretch="lin")
+plot(sd_clad, col=cl)
+# plot(sd_clad_agg, col=cl)
+plot(sd_clad_agg, col=cl)
+
+####################################################################################################
+####################################################################################################
+
+setwd("/Users/nicof/lab") #mac
+
+#install.packages("RStoolbox") if not previously done
+#library to open the necessary ones already installed
+library(raster)
+library(RStoolbox)
+library(ggplot2)
+
+# brick to import images
+p224r63_2011 <- brick("p224r63_2011_masked.grd")
+
+#we use plotRGB
+#b1 blue
+#b2 green
+#b3 red
+#b4 NIR
+#b5 SWIR (short wave infrared)
+#infrared has 3 parts: one close to red, one in other place, one as thermal infrared.
+#b6 thermal infrar
+#b7 SWIR
+#b8 panchromatic
+
+#RGB:
+plotRGB(p224r63_2011, r=5, g=4, b=3, stretch="Lin") 
+#ggRGB calculates RGB color composite raster for plotting with ggplot2
+ggRGB(p224r63_2011,5,4,3)
+
+#same for 1988
+p224r63_1988 <- brick("p224r63_1988_masked.grd")
+plotRGB(p224r63_1988, r=5, g=4, b=3, stretch="Lin") 
+
+#to have it all together in one image with 1 row and 2 columns we use par() multiframe
+par(mfrow=c(1,2))
+plotRGB(p224r63_1988, r=5, g=4, b=3, stretch="Lin") 
+plotRGB(p224r63_2011, r=5, g=4, b=3, stretch="Lin") 
+#pink part increased due to loss of forest consequent to increasing in agriculture
+
+#how to plot all the bands to see all the information together?
+names(p224r63_2011)   #to know the names of the images in that file
+#we are going, through $, to correlate the bands to the image
+plot(p224r63_2011$B1_sre, p224r63_2011$B2_sre)
+
+#p224r63_2011    #gives us the number of data that is 4 million, we need to decrease the size of the file, it's too heavy!
+#dimensions : 1499, 2967, 4447533, 7  (nrow, ncol, ncell, nlayers)
+
+#decrease the resolution to 10 times smaller. res=resempling the resolution, fact=10 because we are decreasing it by a factor of 10
+p224r63_2011_res <- aggregate(p224r63_2011, fact=10)
+
+#library(RStoolbox) is now needed...
+#rasterPCA function calculates R-mode PCA (Principal Component Analysis) for RasterBricks or RasterStacks and returns a RasterBrick with multiple layers of PCA scores
+#PCA is useful to uncover relationships among many variables (as found in a set of raster maps in a map list) and to reduce the amount of data needed to define the relationships
+p224r63_2011_pca <- rasterPCA(p224r63_2011_res)
+
+#we want to plot the map
+plot(p224r63_2011_pca$map)
+
+#we set our colour palette and plot with the map from 2011
+cl <- colorRampPalette(c('dark grey','grey','light grey'))(100) # 
+plot(p224r63_2011_pca$map, col=cl)
+
+summary(p224r63_2011_pca$map, col=cl)
+
+pairs(p224r63_2011)
+
+plotRGB(p224r63_2011_pca$map, r=1, g=2, b=3, stretch="Lin")
+
+#we do the same for 1988
+p224r63_1988_res <- aggregate(p224r63_1988, fact=10)
+p224r63_1988_pca <- rasterPCA(p224r63_1988_res) 
+plot(p224r63_1988_pca$map, col=cl)
+summary(p224r63_1988_pca$model)
+pairs(p224r63_1988)
+
+#operating then the difference to highlight the changes
+difpca <- p224r63_2011_pca$map - p224r63_1988_pca$map
+plot(difpca)
+
+#final plot (impressive!)
+cldif <- colorRampPalette(c('blue','black','yellow'))(100) # 
+plot(difpca$PC1, col=cldif)
