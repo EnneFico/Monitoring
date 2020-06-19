@@ -1,48 +1,3 @@
-# R  code to view biomass over the world
-
-
-
-
-install.packages("rasterdiv")
-install.packages("rasterVis")
-
-library(rasterVis)
-library(rasterdiv)
-
-data(copNDVI)
-plot(copNDVI)
-
-copNDVI <- reclassify(copNDVI, cbind(253:255, NA))
-plot(copNDVI)
-levelplot(copNDVI)
-
-# it's important the resolution!
-copNDVI10 <- aggregate(copNDVI, fact=10)
-
-#important code for rappresentation of ecosystem services
-
-install.packages("ggplot2")
-library(ggplot2)
-
-
-
-myPalette <- colorRampPalette(c('white','green','dark green'))
-sc <- scale_colour_gradientn(colours = myPalette(100), limits=c(1, 8))
-
-
-
-ggR(copNDVI, geom_raster = TRUE) +
-scale_fill_gradientn(name = "NDVI", colours = myPalette(100))+
-labs(x="Longitude",y="Latitude", fill="")+
-# theme(legend.position = "bottom") +
-NULL
-# +
-# ggtitle("NDVI")
-
-
-#####################################################################################
-#####################################################################################
-
 #R code to view biomass over the world and calculate changes in ecosystem functioning
 
 #energy
@@ -64,6 +19,8 @@ plot(copNDVI)
 #cbind is to remove some data from the library that is not useful for us
 #we assign it to the vector copNDVI through <- symbol
 copNDVI<- reclassify(copNDVI, cbind(253:255,NA), right=TRUE)
+
+#important code for rappresentation of ecosystem services
 
 #impressive function to impress your supervisor
 levelplot(copNDVI)
