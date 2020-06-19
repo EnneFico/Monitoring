@@ -1,48 +1,4 @@
-setwd("C:/Users/nicof/lab")
-library(raster)
-library(RStoolbox)
-
-clad <- brick("cladonia_stellaris_calaita.JPG")
-
-plotRGB(clad, 1,2,3, stretch="lin")
-
-
-#set the moving window
-window <- matrix(1, nrow = 3, ncol = 3)
-window
-
-cladpca <- rasterPCA(clad)
-plotRGB(cladpca$map, 1, 2, 3, stretch="lin")
-
-sd_clad <- focal(claspca$map$PC1, w=window, fun=sd)
- 
-#calculate the standar deviation 
-
-PC1_agg <- aggregate(cladpca$map$PC1, fact=10)
-sd_clad <- focal(PC1_agg, w=window, fun=sd)
-
-
-sd_clad <- focal(cladpca$map$PC1, w=window, fun=sd)
-sd_clad_agg <- focal(PC1_agg, w=window, fun=sd)
-
-#plot the calculation
-par(mfrow=c(1,2))
-cl <- colorRampPalette(c('yellow','violet','black'))(100) #
-plot(sd_clad, col=cl)
-
-# plot the calculation
-par(mfrow=c(1,2))
-cl <- colorRampPalette(c('yellow','violet','black'))(100) #
-plot()
-plotRGB(clad, 1,2,3, stretch="lin")
-plot(sd_clad, col=cl)
-# plot(sd_clad_agg, col=cl)
-plot(sd_clad_agg, col=cl)
-
-####################################################################################################
-####################################################################################################
-
-setwd("/Users/nicof/lab") #mac
+setwd("/Users/nicof/lab") #PC
 
 #install.packages("RStoolbox") if not previously done
 #library to open the necessary ones already installed
