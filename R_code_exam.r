@@ -176,7 +176,7 @@ library(ggplot2)  #or function require(ggplot2). in both cases we start to make 
 #####Load the previously data with double click on the file in the lab folder
 #OR
 #Open r and set (ALWAYS) the working directory (where data is coming from and going to)
-setwd("/Users/alessandro/lab") #mac
+setwd("C:/Users/nicof/lab")  #PC
 #load the previous RData
 load("covid_workspace.RData")
 #ls() is the function to check which files are uploaded
@@ -556,7 +556,7 @@ ggR(copNDVI, geom_raster = TRUE) + scale_fill_gradientn(name = "NDVI", colours =
 ##################################################################################
 
 #working on images about the deforestation in the Amazon forest
-setwd("/Users/alessandro/lab")  #mac
+setwd("C:/Users/nicof/lab")  #PC
 library(raster)
 #uploading the two different images, brick() function to create a RasterBrick (multiple layers)
 defor1 <- brick("defor1_.jpg")
