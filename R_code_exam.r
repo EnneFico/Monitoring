@@ -147,7 +147,7 @@ bubble(meuse, "copper", col="red", main= "Copper concentration")
 
 #setting the working directory (where data is coming from and going to)
 #for mac setwd("/Users/yourname/lab")
-setwd("/Users/alessandro/lab")
+setwd("C:/Users/nicof/lab")  #PC
 #the function read.table("covid_agg.csv", head=T) is to open and read the file, with "" because importing from outside
 #<- is to assign to a vector
 covid <- read.table("covid_agg.csv", head=T)  #where head=T or head=TRUE is when we have a first row with no numbers
@@ -355,7 +355,7 @@ plotRGB(p224r63_2011, r=3, g=2, b=4, stretch="Lin")
 ##############Second day##################
 #open saved workspace#
 
-setwd("/Users/alessandro/lab") #mac
+setwd("C:/Users/nicof/lab")  #PC
 #ls() is the list function to see which packages we have already
 ls()
 #library to use the package (nice metaphor: "open the book that we want to read that we have on our bookshelf of packages installed")
@@ -448,7 +448,7 @@ plot(d)
 points(covids)
 
 
-setwd("/Users/alessandro/lab") #mac
+setwd("C:/Users/nicof/lab")  #PC
 load("point_pattern.RData")
 ls("point_pattern.RData")  #to check what's in there
 #covids:point pattern
