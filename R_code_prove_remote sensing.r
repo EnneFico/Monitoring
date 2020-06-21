@@ -1,3 +1,31 @@
+########## librerie usate di prova
+install.packages("rasterdiv")
+install.packages("raster")
+install.packages("RStoolbox")
+
+install.packages("sp")
+install.packages("sf")
+
+install.packages("maptools")
+
+
+
+
+##########################################################
+install.packages("rgdal")
+install.packages("gdalUtils")
+
+#to read jp2
+BandNIR <- readGDAL("T33TVG_20200103T095401_B08_10m.jp2")
+
+#to convert extention of images
+gdal_translate("T33TVG_20200103T095401_B08_10m.jp2", "BandNIR.jpg")
+gdal_translate("T33TVG_20200103T095401_B08_10m.jp2", "BandNIR.tif")
+
+
+
+
+
 ####################################################
 #cutoff image from single rasterLayer with shapefile
 #input: rasterRalyer, Shapefile
