@@ -69,8 +69,6 @@ mshp <- spTransform(M_shp, proj4string(s03.bands))
 
 m03_msk <- mask(crop(s03.bands, extent(mshp)), mshp)
 
-plot(m03_msk)
-
 #####
 
 rlist04a <- list.files(pattern = "_20200407" )
@@ -84,8 +82,6 @@ proj4string(M_shp)
 mshp <- spTransform(M_shp, proj4string(s04a.bands)) 
 
 m04a_msk <- mask(crop(s04a.bands, extent(mshp)), mshp)
-
-plot(m04a_msk)
 
 #####
 
@@ -198,12 +194,12 @@ dev.off()
 #plot NDVI
 clNDVI = colorRampPalette(c("blue", "white", "red"))(256)
 par(mfrow=c(2,3))
-plot(ndvi02, col = clNDVI)
-plot(ndvi03, col = clNDVI)
-plot(ndvi04a, col = clNDVI)
-plot(ndvi04b, col = clNDVI)
-plot(ndvi04c, col = clNDVI)
-plot(ndvi05, col = clNDVI)
+plot(ndvi02, col = clNDVI, main = "27/02/2020")
+plot(ndvi03, col = clNDVI, main = "18/03/2020")
+plot(ndvi04a, col = clNDVI, main = "07/04/2020")
+plot(ndvi04b, col = clNDVI, main = "25/04/2020")
+plot(ndvi04c, col = clNDVI, main = "25/04/2020")
+plot(ndvi05, col = clNDVI, main = "30/04/2020")
 
 ################   SNOW  ################
 
@@ -253,14 +249,9 @@ ndsi05 <- (m05_msk$T33TVG_20200522T095041_B03_20m - m05_msk$T33TVG_20200522T0950
 
 clNDSI = colorRampPalette(c("green", "blue", "white"))(256)
 par(mfrow=c(2,3))
-plot(ndsi02, col = clNDSI )
-plot(ndsi03, col = clNDSI )
-plot(ndsi04a, col = clNDSI )
-plot(ndsi04b, col = clNDSI )
-plot(ndsi04c, col = clNDSI )
-plot(ndsi05, col = clNDSI )
-
-
-
-
-
+plot(ndsi02, col = clNDSI, main = "27/02/2020")
+plot(ndsi03, col = clNDSI, main = "18/03/2020")
+plot(ndsi04a, col = clNDSI, main = "07/04/2020")
+plot(ndsi04b, col = clNDSI, main = "25/04/2020")
+plot(ndsi04c, col = clNDSI, main = "30/04/2020")
+plot(ndsi05, col = clNDSI, main = "22/05/2020")
