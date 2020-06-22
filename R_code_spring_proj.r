@@ -163,29 +163,102 @@ plotRGB(m03_msk,9,3,2,scale= "20000", stretch = "lin", axes = TRUE, main = "18/0
 box(col = "white")
 plotRGB(m04a_msk,9,3,2,scale= "20000", stretch = "lin", axes =TRUE, main = "07/04/2020")
 box(col = "white")
-plotRGB(m04c_msk,9,3,2,scale= "20000", stretch = "lin", axes =TRUE, main = "25/04/2020")
+plotRGB(m04b_msk,9,3,2,scale= "20000", stretch = "lin", axes =TRUE, main = "25/04/2020")
 box(col = "white")
-plotRGB(m04d_msk,9,3,2,scale= "20000", stretch = "lin", axes =TRUE, main = "30/04/2020")
+plotRGB(m04c_msk,9,3,2,scale= "20000", stretch = "lin", axes =TRUE, main = "30/04/2020")
 box(col = "white")
 plotRGB(m05_msk,9,3,2,scale= "20000", stretch = "lin", axes =TRUE, main = "22/05/2020")
 box(col = "white")
 
 # RGB Vegetation Analysis
 par(mfrow=c(2,3))
-plotRGB(m02_msk,7,9,3,scale= "20000", stretch = "lin")
+plotRGB(m02_msk,7,9,3,scale= "20000", stretch = "lin", axes = TRUE, main = "27/02/2020")
 box(col = "white")
-plotRGB(m03_msk,7,9,3,scale= "20000", stretch = "lin")
+plotRGB(m03_msk,7,9,3,scale= "20000", stretch = "lin", axes = TRUE, main = "18/03/2020")
 box(col = "white")
-plotRGB(m04a_msk,7,9,3,scale= "20000", stretch = "lin")
+plotRGB(m04a_msk,7,9,3,scale= "20000", stretch = "lin", axes = TRUE, main = "07/04/2020")
 box(col = "white")
-plotRGB(m04c_msk,7,9,3,scale= "20000", stretch = "lin")
+plotRGB(m04b_msk,7,9,3,scale= "20000", stretch = "lin", axes = TRUE, main = "25/04/2020")
 box(col = "white")
-plotRGB(m04d_msk,7,9,3,scale= "20000", stretch = "lin")
+plotRGB(m04c_msk,7,9,3,scale= "20000", stretch = "lin", axes = TRUE, main = "30/04/2020")
 box(col = "white")
-plotRGB(m05_msk,7,9,3,scale= "20000", stretch = "lin")
+plotRGB(m05_msk,7,9,3,scale= "20000", stretch = "lin", axes = TRUE, main = "22/05/2020")
+box(col = "white")
+
+#NDVI
+ndvi02 <- (m02_msk$T33TVG_20200227T095029_B8A - m02_msk$T33TVG_20200227T095029_B04)/(m02_msk$T33TVG_20200227T095029_B8A + m02_msk$T33TVG_20200227T095029_B04)
+ndvi03 <- (m03_msk$T33TVG_20200318T095029_B8A_20m - m03_msk$T33TVG_20200318T095029_B04_20m)/(m03_msk$T33TVG_20200318T095029_B8A_20m + m03_msk$T33TVG_20200318T095029_B04_20m)
+ndvi04a <-(m04a_msk$T33TVG_20200407T095029_B8A_20m - m04a_msk$T33TVG_20200407T095029_B04_20m)/(m04a_msk$T33TVG_20200407T095029_B8A_20m + m04a_msk$T33TVG_20200407T095029_B04_20m)
+ndvi04b <- (m04b_msk$T33TVG_20200425T100031_B8A_20m - m04b_msk$T33TVG_20200425T100031_B04_20m)/(m04b_msk$T33TVG_20200425T100031_B8A_20m + m04b_msk$T33TVG_20200425T100031_B04_20m)
+ndvi04c <- (m04c_msk$T33TVG_20200430T100019_B8A_20m - m04c_msk$T33TVG_20200430T100019_B04_20m)/(m04c_msk$T33TVG_20200430T100019_B8A_20m + m04c_msk$T33TVG_20200430T100019_B04_20m)
+ndvi05 <- (m05_msk$T33TVG_20200522T095041_B8A_20m - m05_msk$T33TVG_20200522T095041_B04_20m)/(m05_msk$T33TVG_20200522T095041_B8A_20m + m05_msk$T33TVG_20200522T095041_B04_20m)
+
+dev.off()
+
+#plot NDVI
+clNDVI = colorRampPalette(c("blue", "white", "red"))(256)
+par(mfrow=c(2,3))
+plot(ndvi02, col = clNDVI)
+plot(ndvi03, col = clNDVI)
+plot(ndvi04a, col = clNDVI)
+plot(ndvi04b, col = clNDVI)
+plot(ndvi04c, col = clNDVI)
+plot(ndvi05, col = clNDVI)
+
+################   SNOW  ################
+
+#RGB snow cover 1
+# adjust the parameters so the axes colors are white. Also turn off tick marks.
+par(col.axis = "white", col.lab = "white", tck = 0)
+par(mfrow=c(2,3))
+plotRGB(m02_msk,3,7,8,scale= "20000", stretch = "lin", axes = TRUE, main = "27/02/2020")
+box(col = "white")
+plotRGB(m03_msk,3,7,8,scale= "20000", stretch = "lin", axes = TRUE, main = "18/03/2020")
+box(col = "white")
+plotRGB(m04a_msk,3,7,8,scale= "20000", stretch = "lin", axes =TRUE, main = "07/04/2020")
+box(col = "white")
+plotRGB(m04b_msk,3,7,8,scale= "20000", stretch = "lin", axes =TRUE, main = "25/04/2020")
+box(col = "white")
+plotRGB(m04c_msk,3,7,8,scale= "20000", stretch = "lin", axes =TRUE, main = "30/04/2020")
+box(col = "white")
+plotRGB(m05_msk,3,7,8,scale= "20000", stretch = "lin", axes =TRUE, main = "22/05/2020")
+box(col = "white")
+
+#RGB false colours: snow cover 2 + vegetation
+par(mfrow=c(2,3))
+plotRGB(m02_msk,8,9,1,scale= "20000", stretch = "lin", axes = TRUE, main = "27/02/2020")
+box(col = "white")
+plotRGB(m03_msk,8,9,1,scale= "20000", stretch = "lin", axes = TRUE, main = "18/03/2020")
+box(col = "white")
+plotRGB(m04a_msk,8,9,1,scale= "20000", stretch = "lin", axes =TRUE, main = "07/04/2020")
+box(col = "white")
+plotRGB(m04b_msk,8,9,1,scale= "20000", stretch = "lin", axes =TRUE, main = "25/04/2020")
+box(col = "white")
+plotRGB(m04c_msk,8,9,1,scale= "20000", stretch = "lin", axes =TRUE, main = "30/04/2020")
+box(col = "white")
+plotRGB(m05_msk,8,9,1,scale= "20000", stretch = "lin", axes =TRUE, main = "22/05/2020")
 box(col = "white")
 
 
+#NDSI
+ndsi02 <- (m02_msk$T33TVG_20200227T095029_B03 - m02_msk$T33TVG_20200227T095029_B11)/(m02_msk$T33TVG_20200227T095029_B03 + m02_msk$T33TVG_20200227T095029_B11)
+ndsi03 <- (m03_msk$T33TVG_20200318T095029_B03_20m - m03_msk$T33TVG_20200318T095029_B11_20m)/(m03_msk$T33TVG_20200318T095029_B03_20m + m03_msk$T33TVG_20200318T095029_B11_20m)           
+ndsi04a <- (m04a_msk$T33TVG_20200407T095029_B03_20m - m04a_msk$T33TVG_20200407T095029_B11_20m)/(m04a_msk$T33TVG_20200407T095029_B03_20m + m04a_msk$T33TVG_20200407T095029_B11_20m)           
+ndsi04b <- (m04b_msk$T33TVG_20200425T100031_B03_20m - m04b_msk$T33TVG_20200425T100031_B11_20m)/(m04b_msk$T33TVG_20200425T100031_B03_20m + m04b_msk$T33TVG_20200425T100031_B11_20m)
+ndsi04c <- (m04c_msk$T33TVG_20200430T100019_B03_20m - m04c_msk$T33TVG_20200430T100019_B11_20m)/(m04c_msk$T33TVG_20200430T100019_B03_20m + m04c_msk$T33TVG_20200430T100019_B11_20m)           
+ndsi05 <- (m05_msk$T33TVG_20200522T095041_B03_20m - m05_msk$T33TVG_20200522T095041_B11_20m)/(m05_msk$T33TVG_20200522T095041_B03_20m + m05_msk$T33TVG_20200522T095041_B11_20m)
+
+
+
+
+clNDSI = colorRampPalette(c("green", "blue", "white"))(256)
+par(mfrow=c(2,3))
+plot(ndsi02, col = clNDSI )
+plot(ndsi03, col = clNDSI )
+plot(ndsi04a, col = clNDSI )
+plot(ndsi04b, col = clNDSI )
+plot(ndsi04c, col = clNDSI )
+plot(ndsi05, col = clNDSI )
 
 
 
