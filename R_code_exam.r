@@ -921,7 +921,7 @@ summary(model1)
 #abline() function can be used to add vertical, horizontal or regression lines to a graph
 abline (model1)
 ##########################################################################
-setwd("/Users/alessandro/lab")
+setwd("C:/Users/nicof/lab") #PC
 library(raster)
 library(rasterVis)
 faPAR10 <- raster("/Users/alessandro/lab/faPAR10.tif")
