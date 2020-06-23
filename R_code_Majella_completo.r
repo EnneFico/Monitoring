@@ -494,6 +494,31 @@ plot(ndvi05, col = clNDVI)
 plot(ndvi06, col = clNDVI)
 ##############
 
+
+################   SNOW  ################
+
+#RGB snow cover 1
+plotRGB(m01_msk, 3,7,8, stretch = "lin")
+plotRGB(m02_msk, 3,7,8, stretch = "lin")
+plotRGB(m03_msk, 3,7,8, stretch = "lin")
+plotRGB(m04a_msk, 3,7,8, stretch = "lin")
+plotRGB(m04b_msk, 3,7,8, stretch = "lin")
+plotRGB(m04c_msk, 3,7,8, stretch = "lin")
+plotRGB(m04d_msk, 3,7,8, stretch = "lin")
+plotRGB(m05_msk, 3,7,8, stretch = "lin")
+plotRGB(m06_msk, 3,7,8, stretch = "lin")
+
+#RGB snow cover 2
+plotRGB(m01_msk, 8,9,1, stretch = "lin")
+plotRGB(m02_msk, 8,9,1, stretch = "lin")
+plotRGB(m03_msk, 8,9,1, stretch = "lin")
+plotRGB(m04a_msk, 8,9,1, stretch = "lin")
+plotRGB(m04b_msk, 8,9,1, stretch = "lin")
+plotRGB(m04c_msk, 8,9,1, stretch = "lin")
+plotRGB(m04d_msk, 8,9,1, stretch = "lin")
+plotRGB(m05_msk, 8,9,1, stretch = "lin")
+plotRGB(m06_msk, 8,9,1, stretch = "lin")
+
 #NDSI
 ndsi01 <- (m01_msk$T33TVG_20200103T095401_B03_20m - m01_msk$T33TVG_20200103T095401_B11_20m)/(m01_msk$T33TVG_20200103T095401_B03_20m + m01_msk$T33TVG_20200103T095401_B11_20m)
 ndsi02 <- (m02_msk$T33TVG_20200227T095029_B03 - m02_msk$T33TVG_20200227T095029_B11)/(m02_msk$T33TVG_20200227T095029_B03 + m02_msk$T33TVG_20200227T095029_B11)
